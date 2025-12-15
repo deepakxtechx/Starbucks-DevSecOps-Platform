@@ -1,0 +1,79 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+    }
+
+    parameters {
+        string(name: 'action', defaultValue: 'apply', description: 'terraform action: apply or destroy')
+    }
+
+    stages {
+        stage('Checkout from Git') {                        
+            steps {
+                git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/Aseemakram19/starbucks-kubernetes.git'
+            }
+        }
+
+        stage('terraform version') {
+            steps {
+                sh 'terraform --version'
+            }
+        }
+
+        stage('terraform init') {
+            steps {
+                dir('terraform') {
+                    sh '''
+                    terraform init \
+                    -backend-config="access_key=$AWS_ACCESS_KEY_ID" \
+                    -backend-config="secret_key=$AWS_SECRET_ACCESS_KEY"
+                    '''
+                }
+            }
+        }
+
+        stage('terraform validate') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform validate'
+                }
+            }
+        }
+
+        stage('terraform plan') {
+            steps {
+                dir('terraform') {
+                    sh '''
+                    terraform plan \
+                    -var="access_key=$AWS_ACCESS_KEY_ID" \
+                    -var="secret_key=$AWS_SECRET_ACCESS_KEY"
+                    '''
+                }
+            }
+        }
+
+        stage('terraform apply/destroy') {
+            steps {
+                dir('terraform') {
+                    sh '''
+                    terraform ${action} --auto-approve \
+                    -var="access_key=$AWS_ACCESS_KEY_ID" \
+                    -var="secret_key=$AWS_SECRET_ACCESS_KEY"
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ terraform execution completed successfully!'
+        }
+        failure {
+            echo '❌ terraform execution failed! Check the logs.'
+        }
+    }
+}

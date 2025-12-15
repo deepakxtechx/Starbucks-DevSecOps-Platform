@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starbucks-deployment
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: starbucks
+  template:
+    metadata:
+      labels:
+        app: starbucks
+    spec:
+      containers:
+      - name: starbucks-container
+        image: aseemakram19/starbucks
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: starbucks-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: starbucks
+  ports:
+  - port: 80
+    targetPort: 3000

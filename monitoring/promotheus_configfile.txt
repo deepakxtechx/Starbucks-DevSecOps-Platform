@@ -1,0 +1,21 @@
+- job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+          - http://prometheus.io      # Target to probe with HTTP.
+          - http://IP:3000 # Target to probe with HTTPS.
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 13.232.214.2:9115  # The blackbox exporter's real hostname.
+
+
+- job_name: node_exporter
+  static_configs:
+     - targets:
+          - 'IP:9100'
