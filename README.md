@@ -3,6 +3,11 @@
 A production-oriented **DevSecOps implementation** demonstrating secure CI/CD pipelines, container security, Kubernetes orchestration, Infrastructure as Code, observability, and custom domain configuration on AWS.
 
 ---
+## 🎥 Project Demo
+
+▶️ **Implementation Video:**  
+
+---
 
 ## 📌 Project Overview
 
@@ -23,7 +28,6 @@ The platform follows a secure, automated, and scalable architecture aligned with
 - Custom domain configuration using Amazon Route 53  
 
 📌 **Architecture Diagram:**  
-_(Add architecture image here)_  
 `docs/architecture/starbucks-devsecops-architecture.png`
 
 ---
@@ -115,13 +119,6 @@ _(Add architecture image here)_
 - Custom domain configured using **Amazon Route 53**  
 - Previously accessible via `https://deepakprojects.me`  
 - DNS routing to Kubernetes-hosted application  
-
----
-
-## 🎥 Project Demo
-
-▶️ **Implementation Video:**  
-_(Add YouTube or Google Drive link here)_
 
 ---
 
