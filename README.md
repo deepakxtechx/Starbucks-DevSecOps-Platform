@@ -1,61 +1,153 @@
-## Hi there! this my new project
-**Welcome to the Starbuck App Deployment project! This project demonstrates how to deploy a StarBucks Clone Next.js application on Kubernetes cluster using modern DevOps tools, practices and following a DevSecOps approach.**
+# Starbucks Cloud-Native DevSecOps Platform
 
-## 🛠️ **Tools & Services Used**
-
-| **Category**       | **Tools**                                                                                                                                                                                                 |
-|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Version Control** | ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)                                                                                                       |
-| **CI/CD**           | ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white)                                                                                                    |
-| **Code Quality**    | ![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat-square&logo=sonarqube&logoColor=white)                                                                                              |
-| **Containerization**| ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)                                                                                                       |
-| **Orchestration**   | ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)                                                                                          |
-| **Monitoring**      | ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white) |
-| **Security**        | ![OWASP](https://img.shields.io/badge/OWASP-000000?style=flat-square&logo=owasp&logoColor=white) ![Trivy](https://img.shields.io/badge/Trivy-00979D?style=flat-square&logo=trivy&logoColor=white)         |
-| **IAC**             | ![Terraform](https://img.shields.io/badge/Terraform-623CE4?style=flat-square&logo=terraform&logoColor=white)
----
-## 🚦 **Project Stages**
-
-### **Phase 1: Deployment to Docker Container**
-- Containerize the application using Docker.
-- Build and push Docker images to a container registry.
-- Run the application in a Docker container.
-
-### **Phase 2: Deployment to EKS Cluster with Monitoring**
-- Deploy the application to an **Amazon EKS (Elastic Kubernetes Service)** cluster.
-- Set up **Prometheus** and **Grafana** for monitoring and visualization.
-- Implement **Trivy** for vulnerability scanning and **OWASP** for security best practices.
+A production-oriented **DevSecOps implementation** demonstrating secure CI/CD pipelines, container security, Kubernetes orchestration, Infrastructure as Code, observability, and custom domain configuration on AWS.
 
 ---
 
-## 📂 **Code Repository**
-Explore the code and contribute to the project:  
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Aseemakram19/starbucks-kubernetes.git)
+## 📌 Project Overview
+
+This project implements an **end-to-end DevSecOps workflow** for a cloud-native Starbucks web application.  
+It integrates security checks directly into the CI/CD pipeline and deploys the application on **Amazon EKS**, with monitoring, notifications, and DNS-based public access.
 
 ---
-## 📹 **Project Video**
-Watch the step-by-step deployment process:  
-[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/VPJ4gesLXOc)
+
+## 🏗 Architecture Overview
+
+The platform follows a secure, automated, and scalable architecture aligned with industry DevSecOps practices:
+
+- Git-based source control with automated CI triggers  
+- Security-enforced CI/CD pipeline  
+- Containerized application deployed on Kubernetes  
+- AWS infrastructure provisioned using Terraform  
+- Centralized monitoring and visualization  
+- Custom domain configuration using Amazon Route 53  
+
+📌 **Architecture Diagram:**  
+_(Add architecture image here)_  
+`docs/architecture/starbucks-devsecops-architecture.png`
 
 ---
-## 🚀 **Other DevOps Projects**
 
-| **Project**                                | **Video Link**                                                                                   |
-|--------------------------------------------|--------------------------------------------------------------------------------------------------|
-| **JAVA APPLICATION DEPLOYMENT Project**                   | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=R98DHKqAEos) |
-| **Deployment of BINGO in Kubernetes Cluster Monitoring**  | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/j6YxADVF0W8) |
-| **Real-time CICD pipeline Website Jenkins CI CD**         | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/xGWx_cXb9DE) |
-| **DevOps Project , Application deployment on App server via Terraform, Jenkins, SonarQube**                     | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/xGWx_cXb9DE) |
-| **Realtime NODE.js App deployment with PM2 , Shell script, Jenkins, SonarQube ,Github ,Domain SSL cert**                     | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/MFtUCfQ1RX0) |
+## 🔄 Project Workflow
 
-## 🤝 **Connect with Me**
+1. Developer pushes application code to GitHub  
+2. GitHub Webhook triggers the Jenkins CI pipeline  
+3. Jenkins performs static code analysis using SonarQube  
+4. Trivy executes file system vulnerability scanning  
+5. Docker image is built from validated source code  
+6. Trivy scans the Docker image for vulnerabilities  
+7. Secure Docker image is pushed to Docker Hub  
+8. Application is deployed to an existing Amazon EKS cluster  
+9. Prometheus scrapes application and cluster metrics  
+10. Grafana visualizes metrics using dashboards  
+11. Jenkins sends pipeline status notifications via Gmail  
+12. Users access the application using the custom domain **deepakprojects.me** via Amazon Route 53  
 
-Let's connect and discuss DevSecOps  
+---
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohammed-aseem-akram/)  
+## 🧩 Architecture Components
 
+### Source Control & CI Trigger
+- GitHub hosts the application source code  
+- GitHub Webhooks automatically trigger Jenkins pipelines on code push  
 
+### CI/CD & Security
+- Jenkins orchestrates the CI/CD pipeline  
+- SonarQube performs static code quality and security analysis  
+- Trivy scans both the file system and Docker images for vulnerabilities  
+- Security checks are enforced before deployment  
 
+### Containerization & Image Registry
+- Docker is used to containerize the application  
+- Secure container images are pushed to Docker Hub  
 
+### Infrastructure & Orchestration
+- Terraform provisions AWS infrastructure including Amazon EKS  
+- Amazon EKS manages containerized workloads  
+- Kubernetes handles deployment, scaling, and service exposure  
 
+### Observability & Monitoring
+- Prometheus collects application and cluster metrics  
+- Grafana provides real-time dashboards for monitoring  
+
+### Notifications
+- Jenkins sends CI/CD pipeline status notifications via Gmail (SMTP)  
+
+### DNS & User Access
+- Amazon Route 53 manages the custom domain **deepakprojects.me**  
+- Users securely access the application using the custom domain  
+
+---
+
+## 🛠 Tech Stack
+
+- **Cloud**: AWS (EKS, Route 53)  
+- **Infrastructure as Code**: Terraform  
+- **CI/CD**: Jenkins, GitHub Webhooks  
+- **Security**: SonarQube, Trivy  
+- **Containerization**: Docker, Docker Hub  
+- **Orchestration**: Kubernetes (EKS)  
+- **Monitoring**: Prometheus, Grafana  
+- **Notifications**: Gmail (SMTP)  
+
+---
+
+## 🔐 DevSecOps Highlights
+
+- Security integrated directly into the CI pipeline  
+- Static code analysis before image build  
+- File system and container image vulnerability scanning  
+- Secure image promotion to Kubernetes  
+- Infrastructure managed using Infrastructure as Code (IaC)  
+
+---
+
+## 📊 Monitoring & Observability
+
+- Real-time application and Kubernetes cluster metrics  
+- Grafana dashboards for visibility into system health  
+- Enables proactive monitoring and issue detection  
+
+---
+
+## 🌐 Application Access
+
+- Custom domain configured using **Amazon Route 53**  
+- Previously accessible via `https://deepakprojects.me`  
+- DNS routing to Kubernetes-hosted application  
+
+---
+
+## 🎥 Project Demo
+
+▶️ **Implementation Video:**  
+_(Add YouTube or Google Drive link here)_
+
+---
+
+## 📁 Repository Structure
+
+```text
+├── kubernetes/        # Kubernetes manifests
+├── monitoring/        # Prometheus & Grafana configurations
+├── public/            # Static public assets
+├── scripts/           # Automation and helper scripts
+├── src/               # Application source code
+│   ├── assets/
+│   │   ├── font/
+│   │   └── img/
+│   ├── components/
+│   ├── data/
+│   └── pages/
+├── Jenkinsfile        # CI/CD pipeline definition
+├── Dockerfile         # Application container image
+└── README.md
+```
+## 🎯 Key Learnings & Outcomes
+
+- Designed and implemented a secure, automated CI/CD pipeline using Jenkins and GitHub Webhooks  
+- Applied DevSecOps best practices by integrating security scans directly into the CI workflow  
+- Gained hands-on experience provisioning and managing Kubernetes infrastructure on AWS EKS using Terraform  
+- Implemented observability for Kubernetes workloads using Prometheus and Grafana dashboards  
+- Configured production-style DNS-based access using Amazon Route 53 for custom domain routing  
 
