@@ -4,7 +4,7 @@ A production-oriented **DevSecOps implementation** demonstrating secure CI/CD pi
 
 ---
 ## 🎥 Project Demo
-
+https://github.com/user-attachments/assets/1030e90b-b8d8-4608-8474-59f1ff9f411c
 ---
 
 ## 📌 Project Overview
