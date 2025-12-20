@@ -20,7 +20,7 @@ It integrates security checks directly into the CI/CD pipeline and deploys the a
 
 The platform follows a secure, automated, and scalable architecture aligned with industry DevSecOps practices:
 
-- Git-based source control with automated CI triggers  
+- Git-based source control with automated pipeline triggers  
 - Security-enforced CI/CD pipeline  
 - Containerized application deployed on Kubernetes  
 - AWS infrastructure provisioned using Terraform  
@@ -36,7 +36,7 @@ The platform follows a secure, automated, and scalable architecture aligned with
 ## 🔄 Project Workflow
 
 1. Developer pushes application code to GitHub  
-2. GitHub Webhook triggers the Jenkins CI pipeline  
+2. GitHub Webhook triggers the Jenkins  pipeline  
 3. Jenkins performs static code analysis using SonarQube  
 4. Trivy executes file system vulnerability scanning  
 5. Docker image is built from validated source code  
@@ -80,7 +80,7 @@ The platform follows a secure, automated, and scalable architecture aligned with
 
 ### DNS & User Access
 - Amazon Route 53 manages the custom domain **deepakprojects.me**  
-- Users securely access the application using the custom domain  
+- Users access the application using the custom domain  
 
 ---
 
@@ -126,25 +126,25 @@ The platform follows a secure, automated, and scalable architecture aligned with
 ## 📁 Repository Structure
 
 ```text
-├── kubernetes/        # Kubernetes manifests
-├── monitoring/        # Prometheus & Grafana configurations
-├── public/            # Static public assets
-├── scripts/           # Automation and helper scripts
-├── src/               # Application source code
+├── kubernetes/       
+├── monitoring/       
+├── public/           
+├── scripts/           
+├── src/               
 │   ├── assets/
 │   │   ├── font/
 │   │   └── img/
 │   ├── components/
 │   ├── data/
 │   └── pages/
-├── Jenkinsfile        # CI/CD pipeline definition
-├── Dockerfile         # Application container image
+├── Jenkinsfile      
+├── Dockerfile        
 └── README.md
 ```
 ## 🎯 Key Learnings & Outcomes
 
 - Designed and implemented a secure, automated CI/CD pipeline using Jenkins and GitHub Webhooks  
-- Applied DevSecOps best practices by integrating security scans directly into the CI workflow  
+- Applied DevSecOps best practices by integrating security scans directly into the CI/CD workflow  
 - Gained hands-on experience provisioning and managing Kubernetes infrastructure on AWS EKS using Terraform  
 - Implemented observability for Kubernetes workloads using Prometheus and Grafana dashboards  
 - Configured production-style DNS-based access using Amazon Route 53 for custom domain routing  
