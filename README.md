@@ -28,7 +28,8 @@ The platform follows a secure, automated, and scalable architecture aligned with
 - Custom domain configuration using Amazon Route 53  
 
 📌 **Architecture Diagram:**  
-`docs/architecture/starbucks-devsecops-architecture.png`
+
+<img width="1536" height="1024" alt="starbucks_chatgpt" src="https://github.com/user-attachments/assets/6f037d05-e209-44fc-9c71-269e5a10b9f5" />
 
 ---
 
